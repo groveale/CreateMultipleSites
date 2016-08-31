@@ -31,7 +31,7 @@ namespace Threading
             Task task5 = Task.Factory.StartNew(() => CreateSite("Sites5", 900, 5));
 
             Task[] tasks = { task0, task1, task2, task3, task4, task5 };
-            
+            List<Task> taskslist = new List<Task>();
 
 
 
@@ -39,6 +39,7 @@ namespace Threading
             {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
+                //Task.WaitAll(taskslist.ToArray<Task>());
                 Task.WaitAll(tasks);
                 sw.Stop();
                 Console.WriteLine(String.Format("tasks completed in {0}ms", sw.ElapsedMilliseconds));
